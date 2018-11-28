@@ -1,5 +1,5 @@
-# phasenets
-  Phasenets inspired by "Effective training of convolutional neural ntworks with small, specialized datasets" -  Plata, Diego Ruedaa, Ramos-Pollán, Raúla, González, Fabio ( https://content.iospress.com/articles/journal-of-intelligent-and-fuzzy-systems/ifs169131 )
+# Greedy Blockwise Training of Convolutional Neural Networks
+Inspired by "Effective training of convolutional neural ntworks with small, specialized datasets" -  Plata, Diego Ruedaa, Ramos-Pollán, Raúla, González, Fabio ( https://content.iospress.com/articles/journal-of-intelligent-and-fuzzy-systems/ifs169131 )
 
 Phasenets are identical to standard Convolutional neural networks in terms of how they function and how they are designed.
 The key difference here is the method my which the networks are trained. In this code, each network (only Alexnet and InceptionV4 currently finished but more in the future hopefully!) is split into 5 blocks such that in the overall architecture the output of black 1 is the input of block 2 and so on.
