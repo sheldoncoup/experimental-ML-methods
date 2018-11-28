@@ -16,18 +16,18 @@ Training is done with the train_blockwise.py script with the following arguments
  --data_dir // Directory where the data is stored. 
  
  Optional arguments:
- --image_size // Desired side length of the input images. // default=227
- --model_name // Name of the model to train on, only "alexnet" and "inception_v4" currently allowed. // default='alexnet'
- --batch_size // Number of images per batch for training. // default=32
- --ckpt_dir // Directory of the fine tuned checkpoint. // default=None
- --num_gpu // Number of gpus to use for training. // default = 1
- --start_phase // Phase to start training at, only non zero if resuming from a previous run // default = 0
- --freeze_layers // Wherether of not phase training should be run, set false for standard training // default = True)
- --optimizer // Optimizer choice: Adadelta or Adam // default = 'Adadelta'
- --lr // Learning rate to use // default = 0
- --dr // Decay rate to use. // default = 0
- --max_epoch // Maximum number of epochs to train for on each run // default = 100
- --use_test // Whether or not to evaluate the test set. // default=False
- --rand_seed // What seed to use for the random initializations. // default=1
+ --image_size Desired side length of the input images.  Default=227 //
+ --model_name Name of the model to train on, only "alexnet" and "inception_v4" currently allowed. Default=alexnet //
+ --batch_size Number of images per batch for training. Default=32 //
+ --ckpt_dir  Directory of the fine tuned checkpoint. Default=None //
+ --num_gpu Number of gpus to use for training. Default = 1 //
+ --start_phase Phase to start training at, only non zero if resuming from a previous run. Default = 0 //
+ --freeze_layers Wherether of not phase training should be run, set false for standard training. Default = True //
+ --optimizer Optimizer choice: Adadelta or Adam. Default = 'Adadelta' //
+ --lr Learning rate to use,  Default = Whatever the optimizer default value is //
+ --dr Decay rate to use. Default = 0 //
+ --max_epoch Maximum number of epochs to train for on each run Default = 100 //
+ --use_test Whether or not to evaluate the test set. Default=False //
+ --rand_seed What seed to use for the random initializations. Default=1 //
  
  The script expects the data to all be contained in --data_dir, where data_dir contains two (or three) subdirectories names, train, validation (and test). Within each of these directories each class should have a its own subdirectory containing the images from that class.
