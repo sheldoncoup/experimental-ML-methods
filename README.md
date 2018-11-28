@@ -11,9 +11,9 @@ This code utilizes the Keras Deep Learning Library run on top of TensorFlow.
 Training is done with the train_blockwise.py script with the following arguments:
  
  Required arguments:
- --dataset_name // Name of the dataset to be evaluated.
- --num_classes // Number of classes in the dataset. 
- --data_dir // Directory where the data is stored. 
+ --dataset_name Name of the dataset to be evaluated. //
+ --num_classes Number of classes in the dataset. //
+ --data_dir Directory where the data is stored. 
  
  Optional arguments:
  --image_size Desired side length of the input images.  Default=227 //
@@ -28,6 +28,6 @@ Training is done with the train_blockwise.py script with the following arguments
  --dr Decay rate to use. Default = 0 //
  --max_epoch Maximum number of epochs to train for on each run Default = 100 //
  --use_test Whether or not to evaluate the test set. Default=False //
- --rand_seed What seed to use for the random initializations. Default=1 //
+ --rand_seed What seed to use for the random initializations. Default=1 
  
  The script expects the data to all be contained in --data_dir, where data_dir contains two (or three) subdirectories names, train, validation (and test). Within each of these directories each class should have a its own subdirectory containing the images from that class.
