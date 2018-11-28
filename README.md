@@ -31,3 +31,5 @@ Training is done with the train_blockwise.py script with the following arguments
  --rand_seed What seed to use for the random initializations. Default=1 
  
  The script expects the data to all be contained in --data_dir, where data_dir contains two (or three) subdirectories names, train, validation (and test). Within each of these directories each class should have a its own subdirectory containing the images from that class.
+
+Inception V4 architecture coded by Kent Sommer (https://github.com/kentsommer/keras-inceptionV4)

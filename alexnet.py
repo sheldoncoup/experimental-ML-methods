@@ -1,24 +1,20 @@
-import numpy as np
 
-# Sys
-import warnings
+
+
 # Keras Core
-from keras.layers.convolutional import MaxPooling2D, Convolution2D, AveragePooling2D
-
 from keras.layers.merge import concatenate
-from keras import regularizers
-from keras import initializers
-from keras.models import Model
-# Backend
-from keras import backend as K
-# Utils
-
-
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation, Flatten
 from keras.layers.convolutional import Conv2D, MaxPooling2D, ZeroPadding2D
 from keras.layers.normalization import BatchNormalization
 from keras.regularizers import l2
+from keras import initializers
+# Backend
+from keras import backend as K
+# Utils
+import numpy as np
+
+
 
 
 
