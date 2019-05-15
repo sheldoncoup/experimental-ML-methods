@@ -52,7 +52,7 @@ def dimension_reduce(X_train, X_test, nb_reduced_dims, rand_seed):
   return X_train, X_test
 
 
-def monte_carlo_eval_multi(features, labels, label_2_index,intermediate_layer_name, args):
+def monte_carlo_eval_multi(features, labels, label_2_index, args):
   classifier_acc_dict = {}
   
   index_2_label = {i:l for l,i in label_2_index.items()} 
@@ -78,7 +78,7 @@ def monte_carlo_eval_multi(features, labels, label_2_index,intermediate_layer_na
     
     # print some progress report
     if (i+1)%10 == 0:
-      print('Running Accuracy for run {} out of {} using intermediate layer {}'.format( str(i+1),str(args.num_evals), intermediate_layer_name))
+      print('Running Accuracy for run {} out of {} using intermediate layer {}'.format( str(i+1),str(args.num_evals), args.extra_layer))
       for clf in args.classifiers:
         print('{} : {}'.format( clf, str(np.mean(classifier_acc_dict[clf]['accuracys']))))
      
@@ -90,7 +90,7 @@ def parse_args():
   parser = argparse.ArgumentParser()
   parser.add_argument('--classifiers', type=str, help='What classifiers you would like to evaluate.', default='all')
   parser.add_argument('--reduced_dims', type=int, help='Number of dimensions to reduce down to each run.', default=128)
-  parser.add_argument('--layers', type=str, help='Names of layers you would like evaluate the features from', default='all' )
+  parser.add_argument('--extra_layer', type=str, help='Names of layers you would like evaluate the features from', default='None' )
   parser.add_argument('--dataset_name', type=str, help='Name of the dataset to be evaluated, used to find the pickle files.', required=True)
   parser.add_argument('--feature_dir', type=str, help='Directory that the feature files are stored at.', required=True)
   parser.add_argument('--output_dir', type=str, help='Where to save the output files',required=True) 
@@ -111,11 +111,6 @@ def main():
     assert args.classifiers in  ['LinearSVC','SVCRBF', 'ET', 'RF','KNN', 'MLP','GNB',  'LDA']
     args.classifiers = [args.classifiers]
   
-  if args.layers == 'all':
-    args.layers = ['mixed0', 'mixed1', 'mixed2','mixed3', 'mixed4', 'mixed5', 'mixed6', 'mixed7', 'mixed8', 'mixed9']
-  else:
-    args.layers = [args.layers]
-  
   if not os.path.isdir(args.output_dir):
     print('Output directory {} does not exist. Aborting.'.format(args.output_dir))
     raise ValueError
@@ -124,19 +119,15 @@ def main():
     print('Feature directory {} does not exist, Aborting.'.format(args.feature_dir))
     raise ValueError
   
-  layers_acc_dict = {}
-  for intermediate_layer_name in args.layers:
-    if intermediate_layer_name == 'None':
-      features, labels, label_2_index = load_from_disk(args.dataset_name, args.feature_dir)
-    else:
-      features, labels, label_2_index = load_from_disk(args.dataset_name+'_'+ intermediate_layer_name, args.feature_dir)
-    layers_acc_dict[intermediate_layer_name] = monte_carlo_eval_multi(features, labels, label_2_index,intermediate_layer_name, args)
+  
+  features, labels, label_2_index = load_from_disk(args.dataset_name+'_'+ args.extra_layer, args.feature_dir)
+  layer_acc_dict = monte_carlo_eval_multi(features, labels, label_2_index,args)
   
   # Save run details to disk
   txt_name=os.path.join(args.output_dir, 'eval-output-multiclass{}.csv'.format(args.dataset_name))
   results_dict_name=os.path.join(args.output_dir, 'eval-output-dict-multiclass-{}.p'.format(args.dataset_name))
-  save_run_as_txt(layers_acc_dict, txt_name)
-  pickle.dump(layers_acc_dict, open(os.path.join(args.output_dir, results_dict_name + '.p' ), 'wb'))
+  save_run_as_txt(layer_acc_dict, txt_name)
+  pickle.dump(layer_acc_dict, open(os.path.join(args.output_dir, results_dict_name + '.p' ), 'wb'))
   return layers_acc_dict
 
 if __name__ =='__main__':
