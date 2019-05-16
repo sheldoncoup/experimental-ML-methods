@@ -12,7 +12,7 @@ Where possible I have tried to make scripts function with any keras backend, tho
 
 ## Feature Extraction
 These scripts use pre-trained convolutional architectures to extract features from images.
-The extracted features can then be used in a range of classical classifiers.
+The extracted features can then be used in a range of classical classifiers. Experiments using these methods can be found https://www.cs.waikato.ac.nz/~eibe/pubs/IVCNZ_paper_IEEEXplore_approved_most_recent_final.pdf and https://researchcommons.waikato.ac.nz/bitstream/handle/10289/12006/difference-details-transfer.pdf?sequence=10
 
 ## Greedy Layerwise Training
 These scripts trains convolutional architectures in a sequential layerwise fashion.
