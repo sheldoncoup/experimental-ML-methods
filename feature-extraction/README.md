@@ -6,11 +6,11 @@ Theses scripts perform feature extraction from images using pre-trained convolut
 
 Used to extract features from a dataset of images.
 ### Args
---dataset_name    What the dataset is called, used for naming the output files. \\
---data_dir        Where the data is saved. \\
---feature_dir     Where to output the saved features. \\
---ckpt_dir        What ckpt to use for feature extraction, if left blank the script will default to using imagenet weights. \\
---extra_layer     Which extra layer to append to the feature output, if left blank only the pooled output of the final convolutional layer will be used as the extracted features \\
+--dataset_name    What the dataset is called, used for naming the output files. \
+--data_dir        Where the data is saved. \
+--feature_dir     Where to output the saved features. \
+--ckpt_dir        What ckpt to use for feature extraction, if left blank the script will default to using imagenet weights. \
+--extra_layer     Which extra layer to append to the feature output, if left blank only the pooled output of the final convolutional layer will be used as the extracted features \
 
 * Additional model support coming soon *
 
