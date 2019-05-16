@@ -2,7 +2,7 @@
 
 Theses scripts perform feature extraction from images using pre-trained convolutional neural networks. Theses extracted features can be used in conjunction with classical classification techniques to provide a lightweight classification framework that is often surprisingly effective. All scripts can be run diretly from the terminal by passing arguments to them.
 
-## feature_exraction.py
+## feature_extraction.py
 
 Used to extract features from a dataset of images.
 ### Args
